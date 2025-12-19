@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أثر | ATHAR - لأن التغيير يبدأ بخطة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --athar-navy: #1E1B4B;
+            --athar-gold: #B4975A;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+        }
+
+        #error-display {
+            display: none;
+            padding: 30px;
+            color: #721c24;
+            background: #f8d7da;
+            border: 2px solid #f5c6cb;
+            margin: 20px;
+            border-radius: 15px;
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+        }
+
+        .error-title {
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .error-hint {
+            font-size: 0.9rem;
+            margin-top: 15px;
+            color: #1e1b4b;
+        }
+    </style>
+    <script>
+        // تعريف shim لتجنب أخطاء المكتبات
+        window.process = { env: { NODE_ENV: 'development' } };
+        window.global = window;
+
+        window.onerror = function (msg, url, line, col, error) {
+            var display = document.getElementById('error-display');
+            if (display) {
+                display.style.display = 'block';
+                display.innerHTML = '<div class="error-title">حدث خطأ أثناء تحميل التطبيق</div>' +
+                    '<p>' + msg + '</p>' +
+                    '<div class="error-hint">تأكد من تشغيل المشروع عبر أمر <code>npm run dev</code> وليس بفتح الملف مباشرة.</div>';
+            }
+            return false;
+        };
+
+        // تنبيه في حالة فتح الملف مباشرة
+        if (window.location.protocol === 'file:') {
+            window.addEventListener('load', function () {
+                var display = document.getElementById('error-display');
+                if (display) {
+                    display.style.display = 'block';
+                    display.innerHTML = '<div class="error-title">تنبيه: لا يمكن تشغيل التطبيق بفتح الملف مباشرة</div>' +
+                        '<p>يجب تشغيل المشروع باستخدام سيرفر محلي (مثل Vite).</p>' +
+                        '<div class="error-hint">يرجى اتباع الخطوات التالية:<br>1. افتح التيرمنال في مجلد المشروع.<br>2. اكتب <code>npm install</code> (للمرة الأولى فقط).<br>3. اكتب <code>npm run dev</code> للتشغيل.</div>';
+                }
+            });
+        }
+    </script>
+  <script type="module" crossorigin src="./assets/index-U9abuDBz.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CldP_XC6.css">
+</head>
+
+<body>
+    <div id="error-display"></div>
+    <div id="root"></div>
+    <!-- استخدام ملف واحد فقط وبمسار نسبي لضمان التوافق مع Vite -->
+</body>
+
+</html>
